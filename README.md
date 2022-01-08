@@ -40,8 +40,13 @@ Project Front End
 ```
 
 ## Project Main Dependencies
-<img src="https://raw.githubusercontent.com/Rohan-Shakya/Rohan-Shakya/master/images/next_logo.png" alt="Next.js Logo" width=40 height=40 align='left'> [Next.JS](https://nextjs.org/) <img src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png" alt="React.js Logo" width=40, height=40> [React.JS](https://zh-hans.reactjs.org/) <img src="https://www.pngkey.com/png/full/377-3771917_scss-logo.png" alt="React.js Logo" width=45, height=45> [SCSS](https://sass-lang.com/) <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png" alt="typescript logo" width=40 height=40 align='left'> [TypeScript](https://www.typescriptlang.org/)
+<img src="https://raw.githubusercontent.com/Rohan-Shakya/Rohan-Shakya/master/images/next_logo.png" alt="Next.js Logo" width=40 height=40 align='left'> [Next.JS](https://nextjs.org/) 
 
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png" alt="typescript logo" width=40 height=40 align='left'> [TypeScript](https://www.typescriptlang.org/)
+
+<img src="https://www.pngkey.com/png/full/377-3771917_scss-logo.png" alt="React.js Logo" width=45, height=45> [SCSS](https://sass-lang.com/) 
+
+<br />
 More dependency information please check `package.json`.
 
 ## Quick Start Guide
