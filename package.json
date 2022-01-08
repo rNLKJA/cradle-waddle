@@ -1,5 +1,6 @@
 {
-  "name": "front-end",
+  "name": "nextjs-app",
+  "description": "随便の前端技术堆积站",
   "private": true,
   "scripts": {
     "dev": "next dev",
