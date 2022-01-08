@@ -1,0 +1,21 @@
+@import "./palette/Error.palette.scss";
+
+.error404 {
+  color: $errorRed;
+  font-size: 8rem;
+}
+
+.errorMsg {
+  font-size: 2rem;
+}
+
+.errorContainer {
+  height: auto;
+  vertical-align: middle;
+  top: 50%;
+  transform: translateY(-50%);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  left: 10%;
+}
