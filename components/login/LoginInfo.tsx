@@ -9,9 +9,10 @@ import {
   InputLeftElement,
   InputGroup,
   InputRightElement,
+  Select,
 } from "@chakra-ui/react";
-import { grey } from "@mui/material/colors";
-import { MdBuild, MdCall, MdConfirmationNumber } from "react-icons/md";
+
+import { MdConfirmationNumber } from "react-icons/md";
 
 import { FcGoogle } from "react-icons/fc";
 
@@ -51,15 +52,20 @@ export default function LoginInfo() {
         <h3 className={styles.loginH3}>
           <b>Email</b>
         </h3>
-        <Input
-          pr="4.5rem"
-          type={"email"}
-          placeholder="Enter email"
-          isRequired={true}
-          variant="flushed"
-        />
+
+        <InputGroup size="sm">
+          <Input
+            pr="4.5rem"
+            type={"email"}
+            placeholder="Enter email"
+            isRequired={true}
+            variant="flushed"
+            maxLength={30}
+          />
+        </InputGroup>
+
         <br />
-        <br />
+
         <h3 className={styles.loginH3}>
           <b>Password</b>
         </h3>
@@ -71,6 +77,7 @@ export default function LoginInfo() {
             placeholder="Enter password"
             isRequired={true}
             variant="flushed"
+            maxLength={20}
           />
           <InputRightElement width="4.5rem">
             <Button h="1.75rem" size="sm" onClick={() => setShow(!show)}>
