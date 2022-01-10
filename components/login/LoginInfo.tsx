@@ -9,7 +9,9 @@ import {
   InputLeftElement,
 } from "@chakra-ui/react";
 import { grey } from "@mui/material/colors";
-import { MdBuild, MdCall } from "react-icons/md";
+import { MdBuild, MdCall, MdConfirmationNumber } from "react-icons/md";
+
+import { FcGoogle } from "react-icons/fc";
 
 import { ChakraProvider } from "@chakra-ui/react";
 
@@ -31,17 +33,29 @@ export default function LoginInfo() {
 
   return (
     <ChakraProvider>
-      <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
-        <h1>Login</h1>
-        <h3>Look into your future profile display!</h3>
-        <Button>
-          <span>Sign in with Google</span>
+      <Box
+        maxW="xl"
+        w={500}
+        borderWidth="1px"
+        borderRadius="lg"
+        overflow="hidden"
+        p={8}
+      >
+        <h1 className={styles.loginH1}>Login</h1>
+        <h3 className={styles.loginH3}>
+          Look into your future profile display!
+        </h3>
+        <br />
+        <Button leftIcon={<FcGoogle />} width={"100%"}>
+          Sign in with Google
         </Button>
-        <h5 className={styles.breakLine}>
-          {" "}
-          ------ or Sign in with Email ------{" "}
-        </h5>
-        <h3>
+        <br />
+        <br />
+        {/* <h5 className={styles.breakLine}> or Sign in with Email </h5> */}
+        <hr />
+        <br />
+
+        <h3 className={styles.loginH3}>
           <b>Email*:</b>
         </h3>
         <Input
@@ -49,8 +63,9 @@ export default function LoginInfo() {
           size="lg"
           variant="outline"
         />
-
-        <h3>
+        <br />
+        <br />
+        <h3 className={styles.loginH3}>
           <b>Password*:</b>
         </h3>
 
@@ -59,7 +74,17 @@ export default function LoginInfo() {
           size="lg"
           variant="outline"
         />
-        <Button leftIcon={<MdBuild />} colorScheme="pink" variant="solid">
+
+        <br />
+        {/* <hr /> */}
+        <br />
+
+        <Button
+          leftIcon={<MdConfirmationNumber />}
+          colorScheme="pink"
+          variant="solid"
+          width={"100%"}
+        >
           Sign in
         </Button>
       </Box>
