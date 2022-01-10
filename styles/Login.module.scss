@@ -1,5 +1,6 @@
 @import "./palette/Dracula.palette.scss";
 
+// main web page container class
 .loginMainContainer {
   width: 100%;
   height: 100vh;
@@ -8,10 +9,14 @@
   grid-template-columns: 1fr 1fr;
 }
 
+// left container style
 .grid1 {
   background-color: white;
+  background-image: url("../public/image/login/whiteBackground.jpg");
+  background-repeat: cover;
 }
 
+// right container style
 .grid2 {
   background-color: $draculaBackground;
 }
@@ -23,8 +28,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  // border: 1px $draculaCurrent solid;
-  // border-radius: 1vh;
   display: flex;
   justify-content: center;
 }
@@ -34,7 +37,17 @@
   left: 50%;
   transform: translate(-50%, -50%);
   position: relative;
-  width: 1000px;
+  width: 100%;
+  height: 100%;
+  background-image: url("../public/image/login/loginIllustration2.jpg");
+  background-repeat: cover;
+}
+
+.illustrationTextContainer {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: relative;
 }
 
 .h1 {
@@ -47,6 +60,7 @@
   color: $draculaPink;
   padding-right: 10vw;
   text-align: right;
+  font-size: large;
 }
 
 .breakLine {
@@ -55,23 +69,20 @@
 }
 
 .loginH1 {
-  color: $draculaBackground;
-  // padding-left: 10vw;
   font-size: 45px;
   font-weight: bold;
+  color: $draculaCurrent;
+  font-family: "Freight Sans";
 }
 
 .loginH3 {
   color: $draculaBackground;
-  // padding-left: 10vw;
   font-size: 20px;
   font-weight: bold;
 }
 
 .loginH5 {
   color: $draculaCurrent;
-  // padding-left: 10vw;
   font-size: 14px;
-  // font-weight: bold;
   text-align: center;
 }
