@@ -32,11 +32,16 @@ Access project related documentations? Check [Notion!](shorturl.at/qBIJL)
 ## Project Structure
 ```
 Project Front End
-    |---- components  # store self-defined components
-    |---- pages       # front-end access routes and page components rendering
-            |---- api # defined api functions
-    |---- public      # store public files, e.g. images
-    |---- styles      # scss/css style sheets
+    |---- components  
+            |---- login 
+    |---- pages     
+            |---- api
+            |---- [login]
+    |---- public   
+            |---- image
+    |---- styles
+            |---- palatte
+            |---- login
 ```
 
 ## Project Main Dependencies
