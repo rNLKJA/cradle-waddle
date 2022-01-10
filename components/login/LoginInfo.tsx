@@ -33,12 +33,11 @@ export default function LoginInfo() {
         borderWidth="1px"
         borderRadius="lg"
         overflow="hidden"
+        bg={"white"}
         p={8}
       >
         <h1 className={styles.loginH1}>Login</h1>
-        <h3 className={styles.loginH3}>
-          Look into your future profile display!
-        </h3>
+        <h3 className={styles.loginH3}>Looking into your future profile!</h3>
         <br />
         <Button leftIcon={<FcGoogle />} width={"100%"}>
           Sign in with Google
@@ -50,13 +49,19 @@ export default function LoginInfo() {
         <br />
 
         <h3 className={styles.loginH3}>
-          <b>Email*:</b>
+          <b>Email</b>
         </h3>
-        <Input pr="4.5rem" type={"email"} placeholder="Enter email" />
+        <Input
+          pr="4.5rem"
+          type={"email"}
+          placeholder="Enter email"
+          isRequired={true}
+          variant="flushed"
+        />
         <br />
         <br />
         <h3 className={styles.loginH3}>
-          <b>Password*:</b>
+          <b>Password</b>
         </h3>
 
         <InputGroup size="md">
@@ -64,6 +69,8 @@ export default function LoginInfo() {
             pr="4.5rem"
             type={show ? "text" : "password"}
             placeholder="Enter password"
+            isRequired={true}
+            variant="flushed"
           />
           <InputRightElement width="4.5rem">
             <Button h="1.75rem" size="sm" onClick={() => setShow(!show)}>
@@ -74,7 +81,6 @@ export default function LoginInfo() {
 
         <br />
         {/* <hr /> */}
-        <br />
 
         <Button
           leftIcon={<MdConfirmationNumber />}
