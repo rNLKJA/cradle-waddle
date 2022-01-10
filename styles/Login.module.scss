@@ -1,0 +1,51 @@
+@import "./palette/Dracula.palette.scss";
+
+.loginMainContainer {
+  width: 100%;
+  height: 100vh;
+  background-color: $draculaBackground;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.grid1 {
+  background-color: white;
+}
+
+.grid2 {
+  background-color: $draculaBackground;
+}
+
+.loginInfoContainer {
+  width: 80%;
+  height: auto;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  // border: 1px $draculaCurrent solid;
+  // border-radius: 1vh;
+}
+
+.illustration {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: relative;
+}
+
+.h1 {
+  color: $draculaForeground;
+  padding-left: 10vw;
+}
+
+.p {
+  color: $draculaPink;
+  padding-right: 10vw;
+  text-align: right;
+}
+
+.breakLine {
+  color: $draculaCurrent;
+  text-align: center;
+}
