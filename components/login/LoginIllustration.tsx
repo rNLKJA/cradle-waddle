@@ -1,7 +1,7 @@
 // import required stylesheet
 import styles from "../../styles/Login.module.scss";
 
-export default function LoginIllustration() {
+export default function LoginIllustration(): JSX.Element {
   return (
     <div className={styles.illustration}>
       <div className={styles.illustrationTextContainer}>

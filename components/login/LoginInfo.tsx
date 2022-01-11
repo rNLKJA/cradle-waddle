@@ -1,4 +1,4 @@
-// import required components
+// import required components / apis for LoginInfo() component
 import {
   Box,
   Image,
@@ -13,22 +13,21 @@ import {
 } from "@chakra-ui/react";
 
 import { MdConfirmationNumber } from "react-icons/md";
-
 import { FcGoogle } from "react-icons/fc";
 
 import { ChakraProvider } from "@chakra-ui/react";
 import React, { useState } from "react";
+import { Box as Mbox, BoxProps } from "@chakra-ui/layout";
+import { motion } from "framer-motion";
 
 // import required stylesheet
 import styles from "../../styles/Login.module.scss";
 
-import { Box as Mbox, BoxProps } from "@chakra-ui/layout";
-import { motion } from "framer-motion";
-
+// define framer-motion box container
 export const MotionBox = motion<BoxProps>(Mbox);
 
 // define the login info function
-export default function LoginInfo() {
+export default function LoginInfo(): JSX.Element {
   const [show, setShow] = useState(false);
 
   return (
