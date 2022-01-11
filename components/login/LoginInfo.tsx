@@ -22,20 +22,29 @@ import React, { useState } from "react";
 // import required stylesheet
 import styles from "../../styles/Login.module.scss";
 
+import { Box as Mbox, BoxProps } from "@chakra-ui/layout";
+import { motion } from "framer-motion";
+
+export const MotionBox = motion<BoxProps>(Mbox);
+
 // define the login info function
 export default function LoginInfo() {
   const [show, setShow] = useState(false);
 
   return (
     <ChakraProvider>
-      <Box
+      <MotionBox
         maxW="xl"
         w={500}
         borderWidth="1px"
         borderRadius="lg"
         overflow="hidden"
-        bg={"white"}
+        bg={"#ffffff"}
         p={8}
+        drag={"x"}
+        dragConstraints={{ left: -10, right: 10 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
       >
         <h1 className={styles.loginH1}>Login</h1>
         <h3 className={styles.loginH3}>Looking into your future profile!</h3>
@@ -97,7 +106,7 @@ export default function LoginInfo() {
         >
           Sign in
         </Button>
-      </Box>
+      </MotionBox>
     </ChakraProvider>
   );
 }
