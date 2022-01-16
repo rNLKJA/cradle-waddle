@@ -1,4 +1,4 @@
-# 随便の前端技术堆积站
+# Project Cradle
 
 This project is a personal technology stacking station built by two people from scratch to demonstrate our understanding of CS, IT, and DS. Although we do not know what difficulties we will encounter, we will try our best to overcome them.
 
