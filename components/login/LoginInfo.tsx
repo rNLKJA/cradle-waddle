@@ -45,7 +45,7 @@ export default function LoginInfo(): JSX.Element {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
-        <h1 className={styles.loginH1}>Login</h1>
+        <h1 className={styles.loginH1}>女娲之肠</h1>
         <h3 className={styles.loginH3}>Looking into your future profile!</h3>
         <br />
         <Button leftIcon={<FcGoogle />} width={"100%"}>
