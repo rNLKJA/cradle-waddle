@@ -1,4 +1,4 @@
-<div><h1>Project Credle</h1> <span align="right"><a href="https://github.com/chuangyu-hscy/-/blob/main/README.md">EN</a> / <a href="https://github.com/chuangyu-hscy/-/blob/main/doc/README.CN.md">CN</a></span></div>
+<div><h1>Project Credle</h1> <span align="right"><a href="https://github.com/chuangyu-hscy/--/blob/main/README.md">EN</a> / <a href="https://github.com/chuangyu-hscy/--/blob/main/doc/README.CN.md">CN</a></span></div>
 
 ## 摘要
 本项目是两个人从零开始搭建的个人技术堆放站，展示我们对CS、IT、DS的理解。 虽然我们不知道自己会遇到什么困难，但我们会尽力去克服它们。
@@ -46,7 +46,7 @@ Project Front End
 <img src="https://www.pngkey.com/png/full/377-3771917_scss-logo.png" alt="React.js Logo" width=45, height=45> [SCSS](https://sass-lang.com/) 
 
 <br />
-More dependency information please check `package.json`.
+更多API或依存库信息请查看 `package.json`。
 
 ## Quick Start Guide
 运行项目之前，请确保所有的API和依存库已安装。并且请确保 `yarn` 和 `npm` 已安装。
