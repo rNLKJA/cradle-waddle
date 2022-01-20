@@ -1,7 +1,6 @@
 // import required components / apis for LoginInfo() component
 import {
   Box,
-  Image,
   Badge,
   Button,
   Input,
@@ -25,6 +24,7 @@ import { Box as Mbox, BoxProps } from "@chakra-ui/layout";
 import { motion } from "framer-motion";
 import { Form, useFormik } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 
 // import required stylesheet
 import styles from "../../styles/login/Login.module.scss";
