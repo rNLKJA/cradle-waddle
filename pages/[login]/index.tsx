@@ -3,7 +3,7 @@ import LoginInfo from "../../components/login/LoginInfo";
 import LoginIllustration from "../../components/login/LoginIllustration";
 
 // import stylesheet
-import styles from "../../styles/Login.module.scss";
+import styles from "../../styles/login/Login.module.scss";
 
 export default function LoginPage(): JSX.Element {
   return (
