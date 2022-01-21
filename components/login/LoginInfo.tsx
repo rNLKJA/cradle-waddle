@@ -29,6 +29,7 @@ import { useRouter } from "next/router";
 
 // import required stylesheet
 import styles from "../../styles/login/Login.module.scss";
+import { isJSDocUnknownType } from "typescript";
 
 // define the login info function
 export default function LoginInfo(): JSX.Element {
@@ -68,6 +69,8 @@ export default function LoginInfo(): JSX.Element {
           .then((res) => {
             if (res.data.status) {
               console.log(res.data.message);
+
+              localStorage.setItem("jwt", res.data.accessToken);
               router.push("/");
             } else {
               console.log(res.data.message);
