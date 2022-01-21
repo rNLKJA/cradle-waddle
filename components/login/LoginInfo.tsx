@@ -25,6 +25,7 @@ import { motion } from "framer-motion";
 import { Form, useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 // import required stylesheet
 import styles from "../../styles/login/Login.module.scss";
@@ -38,6 +39,8 @@ export default function LoginInfo(): JSX.Element {
     email: string;
     password: string;
   }
+
+  const router = useRouter();
 
   const formik = useFormik({
     initialValues: {
@@ -55,10 +58,26 @@ export default function LoginInfo(): JSX.Element {
     }),
     onSubmit: (values, actions) => {
       setSubmitting(true);
-      setTimeout(() => {
+
+      const loginData = { ...values };
+      setTimeout(async () => {
+        console.log(`Verify user ${values.email}'s information...`);
+
+        await axios
+          .post("http://localhost:9550/user/validateUser", loginData)
+          .then((res) => {
+            if (res.data.status) {
+              console.log(res.data.message);
+              router.push("/");
+            } else {
+              console.log(res.data.message);
+            }
+          });
+
         setSubmitting(false);
-        alert(JSON.stringify(values, null, 2));
-      }, 3000);
+
+        // router.push("/");
+      }, 1000);
     },
   });
 
