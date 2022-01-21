@@ -17,6 +17,7 @@ import {
 
 import { MdConfirmationNumber } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
+import { useEffect } from "react";
 
 import { ChakraProvider } from "@chakra-ui/react";
 import React, { useState } from "react";
@@ -35,11 +36,6 @@ import { isJSDocUnknownType } from "typescript";
 export default function LoginInfo(): JSX.Element {
   const [show, setShow] = useState<boolean>(false);
   const [isSubmitting, setSubmitting] = useState<boolean>(false);
-
-  interface loginData {
-    email: string;
-    password: string;
-  }
 
   const router = useRouter();
 
@@ -67,13 +63,14 @@ export default function LoginInfo(): JSX.Element {
         await axios
           .post("http://localhost:9550/user/validateUser", loginData)
           .then((res) => {
-            if (res.data.status) {
+            if (res.data.csc === 101) {
               console.log(res.data.message);
-
+            } else if (res.data.csc === 102) {
+              console.log(res.data.message);
+            } else if (res.data.csc === 100) {
+              console.log(res.data.message);
               localStorage.setItem("jwt", res.data.accessToken);
               router.push("/");
-            } else {
-              console.log(res.data.message);
             }
           });
 
@@ -144,12 +141,7 @@ export default function LoginInfo(): JSX.Element {
               />
 
               <InputRightElement width="4.5rem">
-                <Button
-                  h="1.75rem"
-                  size="sm"
-                  type="submit"
-                  onClick={() => setShow(!show)}
-                >
+                <Button h="1.75rem" size="sm" onClick={() => setShow(!show)}>
                   {show ? "Hide" : "Show"}
                 </Button>
               </InputRightElement>
