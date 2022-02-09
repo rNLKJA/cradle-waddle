@@ -31,9 +31,11 @@ import { useRouter } from "next/router";
 // import required stylesheet
 import styles from "../../styles/login/Login.module.scss";
 import { isJSDocUnknownType } from "typescript";
+import Cookies from "js-cookie";
+import Link from "next/link";
 
 // define the login info function
-export default function LoginInfo(): JSX.Element {
+export default function LoginInfo({ isLogin, setLogin }: any): JSX.Element {
   const [show, setShow] = useState<boolean>(false);
   const [isSubmitting, setSubmitting] = useState<boolean>(false);
 
@@ -64,13 +66,16 @@ export default function LoginInfo(): JSX.Element {
           .post("http://localhost:9550/user/validateUser", loginData)
           .then((res) => {
             if (res.data.csc === 101) {
-              console.log(res.data.message);
+              alert(res.data.message);
             } else if (res.data.csc === 102) {
-              console.log(res.data.message);
+              alert(res.data.message);
             } else if (res.data.csc === 100) {
-              console.log(res.data.message);
-              localStorage.setItem("jwt", res.data.accessToken);
-              router.push("/");
+              // console.log(res.data.message);
+
+              Cookies.set("token", res.data.token, { expires: (1 / 24) * 3 });
+
+              // localStorage.setItem("jwt", res.data.accessToken);
+              router.push("/loginCheck");
             }
           });
 
@@ -126,7 +131,7 @@ export default function LoginInfo(): JSX.Element {
               Boolean(formik.errors.password) && formik.touched.password
             }
           >
-            <FormLabel className={styles.loginH3}>Email</FormLabel>
+            <FormLabel className={styles.loginH3}>Password</FormLabel>
             <InputGroup size="md">
               <Input
                 pr="4.5rem"
@@ -164,6 +169,19 @@ export default function LoginInfo(): JSX.Element {
             Sign in
           </Button>
         </form>
+
+        <br />
+        {/* <hr /> */}
+        {/* <br /> */}
+
+        <Button
+          onClick={() => setLogin(!isLogin)}
+          colorScheme="blue"
+          variant="ghost"
+          width={"100%"}
+        >
+          Don't have an account?
+        </Button>
       </Box>
     </ChakraProvider>
   );
