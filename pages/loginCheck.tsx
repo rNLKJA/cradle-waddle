@@ -1,14 +1,28 @@
 // import required dependencies
-import { useState, useEffect } from "react";
+import { useState, useEffect, Dispatch } from "react";
 import axios from "axios";
+const jwt = require("jsonwebtoken");
+import Cookies from "js-cookie";
+
+// define data interface
+interface validateUserProps {
+  user: string;
+  email: string;
+  lat: string;
+  setUsername: Dispatch<string>;
+}
+
+// TODO: This file should be removed since we do not need this route
 
 // login check page
 export default function loginCheck() {
-  const [username, setUsername] = useState("NOT DEFINE");
+  let userInfo: validateUserProps;
+  userInfo = jwt.decode(Cookies.get("token"));
+  const [username, setUsername] = useState("Cradle User");
 
   useEffect(() => {
-    obtainSessionInformation(setUsername);
-  }, []);
+    setUsername(userInfo.user);
+  }, [userInfo]);
 
   return (
     <div>
@@ -16,16 +30,3 @@ export default function loginCheck() {
     </div>
   );
 }
-
-// TODO: change types for parameters
-// TODO: add jsdoc
-export const obtainSessionInformation = async (setUsername: any) => {
-  try {
-    await axios.get("http://localhost:9550/user/userinfo").then((res) => {
-      console.log(res);
-      setUsername(res.data.username);
-    });
-  } catch (err) {
-    console.log(err);
-  }
-};
