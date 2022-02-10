@@ -9,7 +9,8 @@ import { useState } from "react";
 import styles from "../../styles/login/Login.module.scss";
 
 export default function LoginPage(): JSX.Element {
-  const [isLogin, setLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState<boolean>(true);
+  // const [username, setUsername] = useState<string>("");
 
   return (
     <div className={styles.loginMainContainer}>
@@ -17,9 +18,19 @@ export default function LoginPage(): JSX.Element {
       <div className={styles.grid1}>
         <div className={styles.loginInfoContainer}>
           {isLogin ? (
-            <LoginInfo isLogin={isLogin} setLogin={setLogin} />
+            <LoginInfo
+              isLogin={isLogin}
+              setIsLogin={setIsLogin}
+              // username={username}
+              // setUsername={setUsername}
+            />
           ) : (
-            <RegistrationInfo isLogin={isLogin} setLogin={setLogin} />
+            <RegistrationInfo
+              isLogin={isLogin}
+              setIsLogin={setIsLogin}
+              // username={username}
+              // setUsername={setUsername}
+            />
           )}
         </div>
       </div>
