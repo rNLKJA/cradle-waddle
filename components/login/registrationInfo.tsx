@@ -17,7 +17,8 @@ import {
 
 import { MdConfirmationNumber } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
-import { useEffect } from "react";
+import { useEffect, Dispatch, SetStateAction } from "react";
+import { AiOutlineCheck } from "react-icons/ai";
 
 import { ChakraProvider } from "@chakra-ui/react";
 import React, { useState } from "react";
@@ -34,11 +35,25 @@ import { isJSDocUnknownType } from "typescript";
 import Cookies from "js-cookie";
 import Link from "next/link";
 
+interface RegisterStatusProps {
+  isLogin: boolean;
+  setIsLogin: Dispatch<SetStateAction<boolean>>;
+}
+
 // define the login info function
+
+/**
+ * This component display the register information container where the user should put every piece
+ * of register information in order to create a new user account.
+ * @param isLogin<boolean>
+ * @param setIslogin<Dispatch<boolean>>
+ * @returns an object contains creation status code
+ */
+
 export default function RegistrationInfo({
   isLogin,
-  setLogin,
-}: any): JSX.Element {
+  setIsLogin,
+}: RegisterStatusProps): JSX.Element {
   const [show, setShow] = useState<boolean>(false);
   const [isSubmitting, setSubmitting] = useState<boolean>(false);
 
@@ -78,11 +93,12 @@ export default function RegistrationInfo({
 
       const createNewUserData = { ...values };
       setTimeout(async () => {
-        console.log(`Verify user ${values.email}'s information...`);
+        console.log(`Creating user ${values.username} ... `);
 
         await axios
           .post("http://localhost:9550/user/createNewUser", createNewUserData) //TODO: change localhost to fixed server address
           .then((res) => {
+            // console.log(res.data);
             if (
               res.data.csc === 101 ||
               res.data.csc === 102 ||
@@ -92,8 +108,9 @@ export default function RegistrationInfo({
               alert(res.data.message);
             } else if (res.data.csc === 105) {
               alert("Welcome to join Cradle family!");
-
-              router.push("/login");
+              console.log(`${values.username} has been created!`);
+              router.push("/login&register");
+              // setLogin(true);
             }
           });
 
@@ -103,6 +120,16 @@ export default function RegistrationInfo({
       }, 1000);
     },
   });
+
+  // const validateUsername = async (username: String) => {
+  // 	axios.post("http://localhost:9550/user/userExistence", {username: formik.values.username}).then(res => {
+  // 		if (res.data.csc === 100) {
+  // 			console.log("")
+  // 		}
+  // 	});
+
+  //   return console.log(username);
+  // };
 
   return (
     <ChakraProvider>
@@ -116,7 +143,7 @@ export default function RegistrationInfo({
         p={8}
       >
         <h1 className={styles.loginH1}>Project Cradle</h1>
-        <h3 className={styles.loginH3}>Do best to all my friends!</h3>
+        <h3 className={styles.loginH3}>DO THE BEST to all my friends!</h3>
 
         <br />
 
@@ -139,7 +166,17 @@ export default function RegistrationInfo({
                 color={"#2b1216"}
                 {...formik.getFieldProps("username")}
               />
+
+              {/* <InputRightElement width="4.5rem">
+                <Button
+                  leftIcon={<AiOutlineCheck />}
+                  colorScheme="teal"
+                  variant="solid"
+                  onClick={() => validateUsername(formik.values.username)}
+                ></Button>
+              </InputRightElement> */}
             </InputGroup>
+
             <FormErrorMessage>{formik.errors.username}</FormErrorMessage>
           </FormControl>
 
@@ -269,7 +306,7 @@ export default function RegistrationInfo({
         <br />
 
         <Button
-          onClick={() => setLogin(!isLogin)}
+          onClick={() => setIsLogin(!isLogin)}
           colorScheme="blue"
           variant="ghost"
           width={"100%"}
