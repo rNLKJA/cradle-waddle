@@ -20,7 +20,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useEffect } from "react";
 
 import { ChakraProvider } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useState, Dispatch, SetStateAction } from "react";
 import { Box as Mbox, BoxProps } from "@chakra-ui/layout";
 import { motion } from "framer-motion";
 import { Form, useFormik } from "formik";
@@ -35,7 +35,24 @@ import Cookies from "js-cookie";
 import Link from "next/link";
 
 // define the login info function
-export default function LoginInfo({ isLogin, setLogin }: any): JSX.Element {
+
+/**
+ * This component display the login information container where the user should put every piece
+ * of login information in order to validate and obtain an access token.
+ * @param isLogin<boolean>
+ * @param setIslogin<Dispatch<boolean>>
+ * @returns an object contains access token
+ */
+
+interface LoginStatusProps {
+  isLogin: boolean;
+  setIsLogin: Dispatch<SetStateAction<boolean>>;
+}
+
+export default function LoginInfo({
+  isLogin,
+  setIsLogin,
+}: LoginStatusProps): JSX.Element {
   const [show, setShow] = useState<boolean>(false);
   const [isSubmitting, setSubmitting] = useState<boolean>(false);
 
@@ -43,13 +60,13 @@ export default function LoginInfo({ isLogin, setLogin }: any): JSX.Element {
 
   const formik = useFormik({
     initialValues: {
-      email: "",
+      username: "",
       password: "",
     },
     validationSchema: Yup.object({
-      email: Yup.string()
-        .email("Please enter a valid email")
-        .required("Email is required!"),
+      username: Yup.string(),
+      // .email("Please enter a valid email")
+      // .required("Username is required!"),
       password: Yup.string()
         .required("Password is required!")
         .min(6, "Minimum length of password is 6")
@@ -60,7 +77,7 @@ export default function LoginInfo({ isLogin, setLogin }: any): JSX.Element {
 
       const loginData = { ...values };
       setTimeout(async () => {
-        console.log(`Verify user ${values.email}'s information...`);
+        console.log(`Verify user ${values.username}'s information...`);
 
         await axios
           .post("http://localhost:9550/user/validateUser", loginData)
@@ -103,15 +120,17 @@ export default function LoginInfo({ isLogin, setLogin }: any): JSX.Element {
         <br />
 
         <form onSubmit={formik.handleSubmit}>
-          <FormLabel className={styles.loginH3}>Email</FormLabel>
           <FormControl
-            isInvalid={Boolean(formik.errors.email) && formik.touched.password}
+            isInvalid={
+              Boolean(formik.errors.username) && formik.touched.password
+            }
           >
+            <FormLabel className={styles.loginH3}>Username</FormLabel>
             <InputGroup size="sm">
               <Input
                 pr="4.5rem"
-                type={"email"}
-                placeholder="Enter email"
+                type={"text"}
+                placeholder="Please enter your username"
                 isRequired={true}
                 variant="flushed"
                 maxLength={30}
@@ -121,7 +140,7 @@ export default function LoginInfo({ isLogin, setLogin }: any): JSX.Element {
                 {...formik.getFieldProps("email")}
               />
             </InputGroup>
-            <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
+            <FormErrorMessage>{formik.errors.username}</FormErrorMessage>
           </FormControl>
 
           <br />
@@ -136,7 +155,7 @@ export default function LoginInfo({ isLogin, setLogin }: any): JSX.Element {
               <Input
                 pr="4.5rem"
                 type={show ? "text" : "password"}
-                placeholder="Enter password"
+                placeholder="And enter your password here"
                 isRequired={true}
                 variant="flushed"
                 maxLength={20}
@@ -175,7 +194,7 @@ export default function LoginInfo({ isLogin, setLogin }: any): JSX.Element {
         {/* <br /> */}
 
         <Button
-          onClick={() => setLogin(!isLogin)}
+          onClick={() => setIsLogin(!isLogin)}
           colorScheme="blue"
           variant="ghost"
           width={"100%"}
