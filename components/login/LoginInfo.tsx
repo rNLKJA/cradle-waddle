@@ -33,6 +33,7 @@ import styles from "../../styles/login/Login.module.scss";
 import { isJSDocUnknownType } from "typescript";
 import Cookies from "js-cookie";
 import Link from "next/link";
+const jwt = require("jsonwebtoken");
 
 // define the login info function
 
@@ -91,8 +92,9 @@ export default function LoginInfo({
 
               Cookies.set("token", res.data.token, { expires: (1 / 24) * 3 });
 
+              const user = jwt.decode(res.data.token);
               // localStorage.setItem("jwt", res.data.accessToken);
-              router.push("/loginCheck");
+              router.push(`/${user.user}`);
             }
           });
 
