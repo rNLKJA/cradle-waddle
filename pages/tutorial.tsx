@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 export default function Tutorial() {
   const [text, setText] = useState("text");
@@ -11,14 +11,26 @@ export default function Tutorial() {
     console.log("Submit");
   };
 
+  const inputElement = useRef();
+
+  const focusInput = () => {
+    inputElement.current.focus();
+  };
+
+  useEffect(() => {
+    focusInput();
+  }, []);
+
   return (
     <>
       <input
+        ref={inputElement}
         type="text"
         value={text}
         onChange={(event) => setText(event.target.value)}
       ></input>
 
+      <button onClick={focusInput}>Focus</button>
       <form onSubmit={(e) => handleSubmit(e)}>
         <button type="submit">Submit</button>
       </form>
